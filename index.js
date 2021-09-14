@@ -76,9 +76,6 @@ function decrypt2(string) {
    }
   }
 
-  console.log(decryptMap)
-  //creating decrypt map for comparison
-  // keys.forEach((key, i) => (decryptMap[key] = values[i]));
   //we need to somehow take the first string and compare it to the map
   //we'll use pointers for this
   //we could leave these at the top with other variables but it's clearer here
