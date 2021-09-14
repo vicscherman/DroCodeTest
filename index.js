@@ -61,8 +61,7 @@ function decrypt2(string) {
   let termToDecrypt = cryptArr[0];
   //used to build decrypt map
   let decryptArr = [];
-  let keys = [];
-  let values = [];
+
   let decryptMap = {};
   let result = '';
 
@@ -70,13 +69,16 @@ function decrypt2(string) {
   for (let i = 1; i < cryptArr.length; i++) {
     decryptArr.push(cryptArr[i].split('|'));
   }
-  //preparing to build an object for checking. We'll build it out of two arrays
+ //building hashmap for translating
   for (let i = 0; i < decryptArr.length; i++) {
-    keys.push(decryptArr[i][0]);
-    values.push(decryptArr[i][1]);
+   if(!decryptMap[decryptArr[i][0]]){
+   decryptMap[decryptArr[i][0]] = decryptArr[i][1]
+   }
   }
+
+  console.log(decryptMap)
   //creating decrypt map for comparison
-  keys.forEach((key, i) => (decryptMap[key] = values[i]));
+  // keys.forEach((key, i) => (decryptMap[key] = values[i]));
   //we need to somehow take the first string and compare it to the map
   //we'll use pointers for this
   //we could leave these at the top with other variables but it's clearer here
@@ -104,12 +106,12 @@ function decrypt2(string) {
     //iterate end pointer otherwise
     end++;
   }
-
+ 
   return result;
 }
 // decrypt1(input1)//pass
 // decrypt1(input2)//pass
 // decrypt1(input3)//fails!!!
-// decrypt2(input1)//pass
+//decrypt2(input1)//pass
 // decrypt2(input2)//pass
 // decrypt2(input3)//pass
